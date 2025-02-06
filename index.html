@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Stage 1(Color Code)/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Stage 1(Color Code)/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Stage 1(Color Code)/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Color Guessing Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1{
+            font-size: 2rem;
+            color: black;
+            font-family: "Press Start 2P", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        h1 i{
+            margin-left: 10px;
+            padding-bottom: 15px;
+
+        }
+        #colorBox {
+            width: 180px;
+            height: 180px;
+            margin: 20px auto;
+            border: 2px solid #000;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .colorOption {
+            width: 100px;
+            height: 100px;
+            border: none;
+            cursor: pointer;
+        }
+        #gameStatus {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #newGameButton {
+            height: 70px;
+            width: 140px;
+            margin-top: 10px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Color Guessing Game<i class="fa-solid fa-gamepad"></i></h1>
+    <p data-testid="gameInstructions" style="font-size: 1.5rem;">Guess the correct color!</p>
+    <div id="colorBox" data-testid="colorBox"></div>
+    <div class="options">
+        <button class="colorOption" data-testid="colorOption"></button>
+        <button class="colorOption" data-testid="colorOption"></button>
+        <button class="colorOption" data-testid="colorOption"></button>
+       
+    </div>
+    <div class="options">
+        <button class="colorOption" data-testid="colorOption"></button>
+        <button class="colorOption" data-testid="colorOption"></button>
+        <button class="colorOption" data-testid="colorOption"></button>
+    </div>
+    
+    <p id="gameStatus" data-testid="gameStatus"></p>
+    <p>Score: <span id="score" data-testid="score">0</span></p>
+    <button id="newGameButton" data-testid="newGameButton">New Game</button>
+
+    <script>
+        const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+        let targetColor = "";
+        let score = 0;
+
+        function startGame() {
+            targetColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById("colorBox").style.backgroundColor = targetColor;
+            document.getElementById("gameStatus").textContent = "";
+            const buttons = document.querySelectorAll(".colorOption");
+            buttons.forEach((button, index) => {
+                button.style.backgroundColor = colors[index];
+                button.onclick = () => checkGuess(colors[index]);
+            });
+        }
+
+        function checkGuess(selectedColor) {
+            if (selectedColor === targetColor) {
+                document.getElementById("gameStatus").textContent = "Correct!";
+                score++;
+            } else {
+                document.getElementById("gameStatus").textContent = "Wrong! Try again.";
+            }
+            document.getElementById("score").textContent = score;
+        }
+
+        document.getElementById("newGameButton").onclick = () => location.reload();
+        startGame();
+    </script>
+</body>
+</html>
