@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/Stage 1(Color Code)/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Stage 1(Color Code)/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Stage 1(Color Code)/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../Stage 1(Color Code)/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Stage 1(Color Code)/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../Stage 1(Color Code)/favicon-16x16.png">
+    <link rel="manifest" href="../Stage 1(Color Code)/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Color Guessing Game</title>
     <style>
@@ -44,7 +44,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
         .colorOption {
             width: 100px;
@@ -54,7 +54,7 @@
             transition: transform 0.3s ease;
         }
         .colorOption:hover{
-            transform: scale(1.1); /* Increases the size by 20% */
+            transform: scale(1.08); /* Increases the size by 20% */
         }
         #gameStatus {
             margin-top: 20px;
@@ -70,6 +70,12 @@
             font-family: Arial, Helvetica, sans-serif;
             font-weight: 400;
             font-style: normal;
+            border-radius: 70%;
+            transition: font-weight 0.3s ease;
+        }
+        #newGameButton:hover {
+            background-color: white;
+            font-weight: 700;
         }
 
 
