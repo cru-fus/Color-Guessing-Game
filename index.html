@@ -97,10 +97,13 @@
             const buttons = document.querySelectorAll(".colorOption");
             buttons.forEach((button, index) => {
                 button.style.backgroundColor = colors[index];
-                button.onclick = () => checkGuess(colors[index]);
+                button.onclick = () => {
+                    checkGuess(colors[index]);
+                    targetColor = colors[Math.floor(Math.random() * colors.length)];
+                    document.getElementById("colorBox").style.backgroundColor = targetColor;
+                };
             });
         }
-
         function checkGuess(selectedColor) {
             if (selectedColor === targetColor) {
                 document.getElementById("gameStatus").textContent = "Correct!";
